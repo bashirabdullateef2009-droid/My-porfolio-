@@ -921,7 +921,7 @@ body:has(button:hover) .c-ring { width: 52px; height: 52px; border-color: var(--
   .audio-drag-handle { width: 14px; height: 24px; }
   .eq-bars { height: 12px; }
   .eq-bars i { width: 2px; }
-  .logo-image { height: 38px; }
+  .logo-image { height: 70px; }
   .contact-cards { margin-top: 2rem; }
   .scroll-hint { display: none; }
 
