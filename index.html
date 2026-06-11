@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AyoTech — Full-Stack Web Developer</title>
+  <link rel="icon" type="image/png" href="logo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="c-dot" id="cursorDot"></div>
+  <div class="c-ring" id="cursorRing"></div>
+
+  <!-- Canvas -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Audio -->
+  <audio id="bgAudio" loop preload="auto">
+    <!-- Drop worship-asake.mp3 in same folder and uncomment: -->
+    <source src="Asake-WORSHIP-feat-DJ-Snake.mp3" type="audio/mpeg"/>
+  </audio>
+
+  <!-- Audio pill -->
+  <div class="audio-pill" id="audioPill">
+    <div class="audio-drag-handle" id="audioDragHandle" title="Drag to move">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><circle cx="9" cy="5" r="1.5"/><circle cx="15" cy="5" r="1.5"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/><circle cx="9" cy="19" r="1.5"/><circle cx="15" cy="19" r="1.5"/></svg>
+    </div>
+    <button class="audio-btn" id="audioBtn" aria-label="Toggle music">
+      <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+      <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+    </button>
+    <div class="audio-meta">
+      <span class="audio-song">Worship</span>
+      <span class="audio-artist">Asake</span>
+    </div>
+    <div class="eq-bars" id="eqBars">
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header id="siteHeader">
+    <a href="#hero" class="logo logo-img">
+      <img src="logo.png" alt="AyoTech" class="logo-image" />
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <a href="#hero"    class="nav-link" data-nav="hero">Home</a>
+      <a href="#about"   class="nav-link" data-nav="about">About</a>
+      <a href="#skills"  class="nav-link" data-nav="skills">Skills</a>
+      <a href="#contact" class="nav-link" data-nav="contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section id="hero" class="section s-hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <h1 class="hero-heading">
+          <span class="h-line" id="typeLine"></span>
+          <span class="h-line h-accent">Developer<br>&amp; Creator.</span>
+        </h1>
+        <p class="hero-body">
+          I build fast, accessible digital experiences — turning ideas into
+          polished products where engineering meets design.
+        </p>
+        <div class="hero-cta">
+          <a href="#about" class="btn-solid">Discover More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+          <a href="#contact" class="btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="avatar-wrap" id="avatarWrap">
+          <div class="avatar-frame">
+            <div class="avatar-inner">
+              <span class="av-initials">AY</span>
+              <div class="av-ring r1"></div>
+              <div class="av-ring r2"></div>
+            </div>
+          </div>
+          <div class="av-badge"><span class="av-dot"></span>Available for hire</div>
+          <div class="av-stat">
+            <span class="av-num">20+</span>
+            <span class="av-lbl">Projects</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- scroll hint -->
+    <div class="scroll-hint">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    </div>
+  </section>
+
+  <!-- ── Marquee divider ── -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Web Development</span><span class="dot">✦</span>
+      <span>UI Design</span><span class="dot">✦</span>
+      <span>React</span><span class="dot">✦</span>
+      <span>Node.js</span><span class="dot">✦</span>
+      <span>Full-Stack</span><span class="dot">✦</span>
+      <span>Clean Code</span><span class="dot">✦</span>
+      <span>Web Development</span><span class="dot">✦</span>
+      <span>UI Design</span><span class="dot">✦</span>
+      <span>React</span><span class="dot">✦</span>
+      <span>Node.js</span><span class="dot">✦</span>
+      <span>Full-Stack</span><span class="dot">✦</span>
+      <span>Clean Code</span><span class="dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ══════════════ ABOUT ══════════════ -->
+  <section id="about" class="section s-about">
+    <div class="about-grid">
+      <div class="about-copy">
+        <p class="section-label reveal">About Me</p>
+        <h2 class="section-heading reveal" data-delay="0.1">
+          Building the web,<br><em>one layer at a time.</em>
+        </h2>
+        <p class="body-text reveal" data-delay="0.2">
+          I'm <strong>Ayo</strong>, a passionate full-stack developer based in Nigeria.
+          I specialise in building digital experiences that are fast, intuitive, and
+          visually compelling — from pixel-perfect frontends to resilient backend systems.
+        </p>
+        <p class="body-text reveal" data-delay="0.28">
+          I believe great software is equal parts engineering and design.
+          Every layer of the stack gets the same level of care and craft.
+        </p>
+        <p class="body-text reveal" data-delay="0.36">
+          When I'm not building, I'm exploring new web technologies, mentoring
+          developers, or listening to good music while thinking in code.
+        </p>
+        <a href="#contact" class="btn-solid reveal" data-delay="0.44" style="margin-top:2rem; display:inline-flex;">
+          Let's Work Together
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card reveal" data-delay="0.1">
+          <span class="stat-num" data-count="3" data-suffix="+">0</span>
+          <span class="stat-name">Years of Experience</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:60%"></div></div>
+        </div>
+        <div class="stat-card reveal" data-delay="0.2">
+          <span class="stat-num" data-count="20" data-suffix="+">0</span>
+          <span class="stat-name">Projects Delivered</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:80%"></div></div>
+        </div>
+        <div class="stat-card reveal" data-delay="0.3">
+          <span class="stat-num" data-count="15" data-suffix="+">0</span>
+          <span class="stat-name">Happy Clients</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:65%"></div></div>
+        </div>
+        <div class="stat-card reveal" data-delay="0.4">
+          <span class="stat-num" data-count="100" data-suffix="%">0</span>
+          <span class="stat-name">Commitment Rate</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ SKILLS ══════════════ -->
+  <section id="skills" class="section s-skills">
+    <div class="skills-inner">
+      <div class="skills-header">
+        <p class="section-label reveal">Tech Stack</p>
+        <h2 class="section-heading reveal" data-delay="0.1">What I work with.</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="sk-card reveal" data-delay="0.05">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+          </div>
+          <span class="sk-name">HTML5</span>
+          <span class="sk-level">Expert</span>
+        </div>
+        <div class="sk-card reveal" data-delay="0.10">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <span class="sk-name">CSS3</span>
+          <span class="sk-level">Expert</span>
+        </div>
+        <div class="sk-card reveal" data-delay="0.15">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <span class="sk-name">JavaScript</span>
+          <span class="sk-level">Advanced</span>
+        </div>
+        <div class="sk-card reveal" data-delay="0.20">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <span class="sk-name">TypeScript</span>
+          <span class="sk-level">Advanced</span>
+        </div>
+        <div class="sk-card reveal" data-delay="0.25">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z"/></svg>
+          </div>
+          <span class="sk-name">React</span>
+          <span class="sk-level">Advanced</span>
+        </div>
+        <div class="sk-card reveal" data-delay="0.30">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span class="sk-name">Next.js</span>
+          <span class="sk-level">Advanced</span>
+        </div>
+        <div class="sk-card reveal" data-delay="0.35">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <span class="sk-name">Node.js</span>
+          <span class="sk-level">Advanced</span>
+        </div>
+        <div class="sk-card reveal" data-delay="0.40">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <span class="sk-name">MongoDB</span>
+          <span class="sk-level">Intermediate</span>
+        </div>
+        <div class="sk-card reveal" data-delay="0.45">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <span class="sk-name">PostgreSQL</span>
+          <span class="sk-level">Intermediate</span>
+        </div>
+        <div class="sk-card reveal" data-delay="0.50">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          </div>
+          <span class="sk-name">Git / GitHub</span>
+          <span class="sk-level">Advanced</span>
+        </div>
+        <div class="sk-card reveal" data-delay="0.55">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="sk-name">Tailwind CSS</span>
+          <span class="sk-level">Expert</span>
+        </div>
+        <div class="sk-card reveal" data-delay="0.60">
+          <div class="sk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="sk-name">Figma</span>
+          <span class="sk-level">Proficient</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CONTACT ══════════════ -->
+  <section id="contact" class="section s-contact">
+    <div class="contact-inner">
+      <p class="section-label reveal">Get in Touch</p>
+      <h2 class="section-heading reveal" data-delay="0.1">
+        Ready to build<br><em>something great?</em>
+      </h2>
+      <p class="body-text reveal" data-delay="0.2" style="max-width:500px;">
+        Whether you have a project in mind, a question, or just want to say hi —
+        my inbox is always open. I'll get back to you quickly.
+      </p>
+
+      <div class="contact-cards reveal" data-delay="0.3">
+        <a href="mailto:ayo@example.com" class="c-card">
+          <div class="c-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="c-card-info">
+            <span class="c-card-label">Email</span>
+            <span class="c-card-val">ayo@example.com</span>
+          </div>
+          <svg class="c-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="https://github.com" target="_blank" class="c-card">
+          <div class="c-card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.461-1.11-1.461-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.087.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.337 4.687-4.565 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.417 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          </div>
+          <div class="c-card-info">
+            <span class="c-card-label">GitHub</span>
+            <span class="c-card-val">github.com/ayo</span>
+          </div>
+          <svg class="c-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="https://wa.me/+2348106274076" target="_blank" class="c-card" id="waCard">
+          <div class="c-card-icon" style="background:rgba(37,211,102,.12);">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="color:#25D366;width:18px;height:18px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="c-card-info">
+            <span class="c-card-label">WhatsApp</span>
+            <span class="c-card-val" id="waNum">+234 810 627 4076 </span>
+          </div>
+          <svg class="c-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <span>© 2026 Ayo😁. Crafted with care😌.</span>
+    <span class="footer-dot">✦</span>
+    <span>All rights reserved.</span>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
