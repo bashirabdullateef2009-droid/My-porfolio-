@@ -65,12 +65,16 @@
     requestAnimationFrame(loop);
   }
   window.addEventListener('resize', resize, { passive: true });
-  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  if (!window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  }
   resize(); loop();
 })();
 
 /* ── Custom Cursor ─────────────────────────── */
 (function initCursor() {
+  // Skip on touch devices — no mouse to track
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
   const dot  = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   if (!dot || !ring) return;
